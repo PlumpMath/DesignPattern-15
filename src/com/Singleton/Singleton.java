@@ -7,11 +7,13 @@ package com.Singleton;
  * 作用：保证某个实例中有且只有一个
  * 类型：懒汉模式，饿汉模式
  */
+
+//4月19日培训
 public class Singleton {
     //1、将构造方法私有化，不允许外界直接创建对象
     private Singleton(){
-
     }
+
     //2、创建类的唯一实例,使用private static
     private static Singleton instance = new Singleton();
 
