@@ -15,6 +15,7 @@ public class HairFactory {
      */
     public HairInterface getHair(String key){
         if ("left".equals(key)){
+
             return new LeftHair();
         }else if("right".equals(key)){
             return new RightHair();

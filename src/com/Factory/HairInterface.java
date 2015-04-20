@@ -9,4 +9,5 @@ package com.Factory;
 public interface HairInterface {
 
     public void draw();
+
 }

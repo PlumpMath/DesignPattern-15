@@ -18,15 +18,15 @@ public class Test {
         hair.draw();
         HairInterface inHair = factory.getHairByClassKey("in");
         inHair.draw();
-
-        //抽象工厂模式
-
-        PersonFactory factory02= new MCFactory();
-        Girl girl = factory02.getGirl();
-        girl.DrawGirl();
-
-        PersonFactory factory03 = new HNFactory();
-        Boy boy = factory03.getBoy();
-        boy.DrawBoy();
+//
+//        //抽象工厂模式
+//
+//        PersonFactory factory02= new MCFactory();
+//        Girl girl = factory02.getGirl();
+//        girl.DrawGirl();
+//
+//        PersonFactory factory03 = new HNFactory();
+//        Boy boy = factory03.getBoy();
+//        boy.DrawBoy();
     }
 }
