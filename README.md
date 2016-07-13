@@ -8,3 +8,5 @@ different Design Mode on java
 4. Template Method Pattern (模版方法)
 5. Builder Pattern (建造者)
 6. Proxy Pattern (代理)
+7. Prototype Pattern (原型)
+8. Mediator Pattern (中介者)
