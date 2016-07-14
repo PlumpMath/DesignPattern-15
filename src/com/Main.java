@@ -3,6 +3,10 @@ package com;
 import com.abstractfactory.example.FemaleFactory;
 import com.abstractfactory.example.MaleFactory;
 import com.builder.example.Director;
+import com.command.example.AddRequirementCommand;
+import com.command.example.Command;
+import com.command.example.DeleteRequirementCommand;
+import com.command.example.Invoker;
 import com.factorymethod.example.*;
 import com.mediator.*;
 import com.prototype.example.AdvTemplate;
@@ -10,11 +14,13 @@ import com.prototype.example.Mail;
 import com.proxy.example.GamePlayer;
 import com.proxy.example.GamePlayerProxy;
 import com.proxy.example.IGamePlayer;
+import com.responsibility.example.*;
 import com.singleton.example.Emperor;
 import com.templatemethod.example.HummerH1Model;
 import com.templatemethod.example.HummerH2Model;
 import com.templatemethod.example.HummerModel;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -32,6 +38,8 @@ public class Main {
 //        proxy();
 //        prototype();
 //        mediator();
+//        command();
+        responsibility();
     }
 
     /**
@@ -198,4 +206,45 @@ public class Main {
 
 
     }
+
+
+    /**
+     * Command Pattern
+     */
+
+    private static void command(){
+        Invoker invoker = new Invoker();
+        System.out.println("-----增加需求------");
+        Command command = new AddRequirementCommand();
+        invoker.setCommand(command);
+        invoker.action();
+
+        System.out.println("-----删除需求-------");
+        Command deleteCommand = new DeleteRequirementCommand();
+        invoker.setCommand(deleteCommand);
+        invoker.action();
+    }
+
+
+    /**
+     * Chain of Responsibility Pattern
+     */
+    private static void responsibility(){
+        Random random = new Random();
+        ArrayList<IWomen> arrayList = new ArrayList();
+        for (int i=0;i<5;i++){
+            arrayList.add(new Women(random.nextInt(4),"出去逛街"));
+        }
+        Handler father = new Father();
+        Handler husband = new Husband();
+        Handler son = new Son();
+
+        father.setNext(husband);
+        husband.setNext(son);
+        for (IWomen women: arrayList ){
+            father.handleMessage(women);
+        }
+
+    }
+
 }
