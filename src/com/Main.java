@@ -107,95 +107,95 @@ public class Main {
     /**
      * Builder Pattern
      */
-//    private static void builder(){
-////        ArrayList<String> arrayList = new ArrayList<>();
-////        arrayList.add("engine boom");
-////        arrayList.add("stop");
-////        arrayList.add("start");
-////        BenzBuilder builder = new BenzBuilder();
-////        builder.setSequence(arrayList);
-////        BenzModel model = (BenzModel) builder.getCarModel();
-////        model.run();
-//
-//        Director director = new Director();
-//
-//        for (int i=0;i<10000;i++){
-//            director.getABenzModel().run();
-//        }
-//        for (int i=0;i<100000;i++){
-//            director.getABMWModel().run();
-//        }
-//        //.......
-//    }
-//
-//    /**
-//     * Proxy Pattern
-//     */
-//    private static void proxy(){
-//        IGamePlayer player = new GamePlayer("san");
-//        GamePlayerProxy playerProxy = new GamePlayerProxy(player);
-//
-//        System.out.println("开始时间:10:22");
-//        playerProxy.login("zhangsan","password");
-//        playerProxy.killBoss();
-//        playerProxy.upgrade();
-//        System.out.println("结束时间:12:20");
-//    }
-//
-//    /**
-//     * Prototype Pattern
-//     */
-//    private static void prototype(){
-//        int i=0;
-//        Mail mail = new Mail(new AdvTemplate());
-//
-//        mail.setTail("Toryang's");
-//
-//        while (i<MAX_COUNT){
-//            Mail cloneMail = mail.clone();
-//            cloneMail.setAppellation("Mr/Ms: "+getRandString(5));
-//            cloneMail.setReceiver(getRandString(8)+"@.com");
-//            sendMail(cloneMail);
-//            i++;
-//        }
-//
-//    }
-//
-//    private static void sendMail(Mail mail){
-//        System.out.println("titla:"+mail.getSubject()+"  receiver:"+mail.getReceiver()+"\t...send success");
-//    }
-//
-//    private static String getRandString(int maxLength){
-//        String source = "abcdefghiJklmnopqrstuvwkyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//        StringBuffer sb = new StringBuffer();
-//        Random rand = new Random();
-//        for (int i=0;i<maxLength;i++){
-//            sb.append(source.charAt(rand.nextInt(source.length())));
-//        }
-//
-//        return sb.toString();
-//    }
-//
-//
-//    /**
-//     * Mediator Pattern
-//     */
-//
-//    private static void mediator(){
-//        AbstractMediator mediator = new Mediator();
-//
-//        System.out.println("-----采购人员采购电脑------");
-//        Purchase purchase = new Purchase(mediator);
-//        purchase.buyIBMcomputer(100);
-//
-//        System.out.println("-----销售人员销售电脑------");
-//        Sale sale = new Sale(mediator);
-//        sale.sellIBMComputer(100);
-//
-//        System.out.println("------库房人员清理库存------");
-//        Stock stock = new Stock(mediator);
-//        stock.clearStock();
-//
-//
-//    }
+    private static void builder(){
+//        ArrayList<String> arrayList = new ArrayList<>();
+//        arrayList.add("engine boom");
+//        arrayList.add("stop");
+//        arrayList.add("start");
+//        BenzBuilder builder = new BenzBuilder();
+//        builder.setSequence(arrayList);
+//        BenzModel model = (BenzModel) builder.getCarModel();
+//        model.run();
+
+        Director director = new Director();
+
+        for (int i=0;i<10000;i++){
+            director.getABenzModel().run();
+        }
+        for (int i=0;i<100000;i++){
+            director.getABMWModel().run();
+        }
+        //.......
+    }
+
+    /**
+     * Proxy Pattern
+     */
+    private static void proxy(){
+        IGamePlayer player = new GamePlayer("san");
+        GamePlayerProxy playerProxy = new GamePlayerProxy(player);
+
+        System.out.println("开始时间:10:22");
+        playerProxy.login("zhangsan","password");
+        playerProxy.killBoss();
+        playerProxy.upgrade();
+        System.out.println("结束时间:12:20");
+    }
+
+    /**
+     * Prototype Pattern
+     */
+    private static void prototype(){
+        int i=0;
+        Mail mail = new Mail(new AdvTemplate());
+
+        mail.setTail("Toryang's");
+
+        while (i<MAX_COUNT){
+            Mail cloneMail = mail.clone();
+            cloneMail.setAppellation("Mr/Ms: "+getRandString(5));
+            cloneMail.setReceiver(getRandString(8)+"@.com");
+            sendMail(cloneMail);
+            i++;
+        }
+
+    }
+
+    private static void sendMail(Mail mail){
+        System.out.println("titla:"+mail.getSubject()+"  receiver:"+mail.getReceiver()+"\t...send success");
+    }
+
+    private static String getRandString(int maxLength){
+        String source = "abcdefghiJklmnopqrstuvwkyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuffer sb = new StringBuffer();
+        Random rand = new Random();
+        for (int i=0;i<maxLength;i++){
+            sb.append(source.charAt(rand.nextInt(source.length())));
+        }
+
+        return sb.toString();
+    }
+
+
+    /**
+     * Mediator Pattern
+     */
+
+    private static void mediator(){
+        AbstractMediator mediator = new Mediator();
+
+        System.out.println("-----采购人员采购电脑------");
+        Purchase purchase = new Purchase(mediator);
+        purchase.buyIBMcomputer(100);
+
+        System.out.println("-----销售人员销售电脑------");
+        Sale sale = new Sale(mediator);
+        sale.sellIBMComputer(100);
+
+        System.out.println("------库房人员清理库存------");
+        Stock stock = new Stock(mediator);
+        stock.clearStock();
+
+
+    }
 }
