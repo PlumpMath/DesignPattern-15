@@ -12,3 +12,5 @@ different Design Mode on java
 8. Mediator Pattern (中介者模式)
 9. Command Pattern (命令模式)
 10. Chain of Responsibility Pattern (责任链模式)
+11. Decorator Pattern (装饰者模式)
+12. Strategy Pattern (策略模式)

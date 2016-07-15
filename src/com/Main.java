@@ -7,6 +7,10 @@ import com.command.example.AddRequirementCommand;
 import com.command.example.Command;
 import com.command.example.DeleteRequirementCommand;
 import com.command.example.Invoker;
+import com.decorator.example.ForthGradeSchoolReport;
+import com.decorator.example.HighScoreDecorator;
+import com.decorator.example.SchoolReport;
+import com.decorator.example.SortDecorator;
 import com.factorymethod.example.*;
 import com.mediator.*;
 import com.prototype.example.AdvTemplate;
@@ -16,6 +20,10 @@ import com.proxy.example.GamePlayerProxy;
 import com.proxy.example.IGamePlayer;
 import com.responsibility.example.*;
 import com.singleton.example.Emperor;
+import com.strategy.example.BackDoor;
+import com.strategy.example.BlockEnemy;
+import com.strategy.example.Context;
+import com.strategy.example.GivenGreenLight;
 import com.templatemethod.example.HummerH1Model;
 import com.templatemethod.example.HummerH2Model;
 import com.templatemethod.example.HummerModel;
@@ -39,7 +47,9 @@ public class Main {
 //        prototype();
 //        mediator();
 //        command();
-        responsibility();
+//        responsibility();
+//        decorator();
+        strategy();
     }
 
     /**
@@ -247,4 +257,34 @@ public class Main {
 
     }
 
+    /**
+     * Decorator Pattern
+     */
+    private static void decorator(){
+        SchoolReport sr;
+        sr = new ForthGradeSchoolReport();
+        sr = new HighScoreDecorator(sr);
+        sr = new SortDecorator(sr);
+
+        sr.report();
+
+        sr.sign("Sam");
+    }
+
+    /**
+     * Strategy Pattern
+     */
+    private static void strategy(){
+        Context context;
+        System.out.println("---one---");
+        context = new Context(new BackDoor());
+        context.operate();
+        System.out.println("---two---");
+        context = new Context(new GivenGreenLight());
+        context.operate();
+        System.out.println("---three---");
+        context = new Context(new BlockEnemy());
+        context.operate();
+
+    }
 }
