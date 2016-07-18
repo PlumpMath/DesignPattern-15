@@ -1,7 +1,13 @@
 package com;
 
+import com.Iterator.example.IProject;
+import com.Iterator.example.IProjectIterator;
+import com.Iterator.example.Project;
 import com.abstractfactory.example.FemaleFactory;
 import com.abstractfactory.example.MaleFactory;
+import com.adapter.example.IUserInfo;
+import com.adapter.example.OuterUserInfo;
+import com.adapter.example.UserInfo;
 import com.builder.example.Director;
 import com.command.example.AddRequirementCommand;
 import com.command.example.Command;
@@ -49,7 +55,9 @@ public class Main {
 //        command();
 //        responsibility();
 //        decorator();
-        strategy();
+//        strategy();
+//        adapter();
+        iterator();
     }
 
     /**
@@ -285,6 +293,35 @@ public class Main {
         System.out.println("---three---");
         context = new Context(new BlockEnemy());
         context.operate();
+
+    }
+
+    /**
+     * Adapter Pattern
+     */
+    private static void adapter(){
+        IUserInfo yongGirl = new UserInfo();
+        IUserInfo outerUser = new OuterUserInfo();
+        for (int i=0;i<10;i++){
+            yongGirl.getMobileNumber();
+            outerUser.getMobileNumber();
+        }
+    }
+
+    /**
+     *
+     */
+    private static void iterator(){
+        IProject project = new Project();
+        project.add("ddddddd",10,100000);
+        project.add("aaaaa",100,10000);
+        project.add("ccccccc",123,13345555);
+
+        IProjectIterator projectIterator = project.iterator();
+        while (projectIterator.hasNext()){
+            IProject p = (IProject)projectIterator.next();
+            System.out.println(p.getProjectInfo());
+        }
 
     }
 }

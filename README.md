@@ -14,3 +14,4 @@ different Design Mode on java
 10. Chain of Responsibility Pattern (责任链模式)
 11. Decorator Pattern (装饰者模式)
 12. Strategy Pattern (策略模式)
+13. Adapter Pattern (适配器模式)
