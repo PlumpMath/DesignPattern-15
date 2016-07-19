@@ -13,6 +13,9 @@ import com.command.example.AddRequirementCommand;
 import com.command.example.Command;
 import com.command.example.DeleteRequirementCommand;
 import com.command.example.Invoker;
+import com.composite.Branch;
+import com.composite.Crop;
+import com.composite.Leaf;
 import com.decorator.example.ForthGradeSchoolReport;
 import com.decorator.example.HighScoreDecorator;
 import com.decorator.example.SchoolReport;
@@ -36,6 +39,7 @@ import com.templatemethod.example.HummerModel;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.Callable;
 
 /**
  * Created by toryang on 7/11/16.
@@ -57,7 +61,8 @@ public class Main {
 //        decorator();
 //        strategy();
 //        adapter();
-        iterator();
+//        iterator();
+        composite();
     }
 
     /**
@@ -309,7 +314,7 @@ public class Main {
     }
 
     /**
-     *
+     * Iterator Pattern
      */
     private static void iterator(){
         IProject project = new Project();
@@ -324,4 +329,76 @@ public class Main {
         }
 
     }
+
+    /**
+     * Composite Pattern
+     */
+    private static void composite(){
+        Branch ceo = compositeCorpTree();
+        System.out.println(ceo.getInfo());
+        System.out.println(getTreeInfo(ceo));
+
+    }
+
+    public static Branch compositeCorpTree(){
+        Branch root = new Branch("wang","manager",100000);
+        Branch developDep = new Branch("liu","develop manager",10000);
+        Branch salesDep = new Branch("ma","sales manager",20000);
+        Branch financeDep = new Branch("zhao","finance manager",30000);
+
+        Branch firstDev = new Branch("yang","fisrst dev",5000);
+        Branch secondDev = new Branch("wu","second dev",6000);
+
+        Leaf a = new Leaf("a","developer 1",2000);
+        Leaf b = new Leaf("b","developer 2",2000);
+        Leaf c = new Leaf("c","developer 3",2000);
+        Leaf d = new Leaf("d","developer 1",2000);
+        Leaf e = new Leaf("e","developer 2",2000);
+        Leaf f = new Leaf("f","developer 3",2000);
+        Leaf g = new Leaf("g","developer 1",2000);
+        Leaf h = new Leaf("h","sales",2000);
+        Leaf i = new Leaf("i","sales",2000);
+        Leaf j = new Leaf("j","finance",2000);
+        Leaf k = new Leaf("k","ceo sec",2000);
+
+        Leaf zheng = new Leaf("zheng","develop vice",20000);
+
+
+        root.addSubordinate(k);
+        root.addSubordinate(developDep);
+        root.addSubordinate(salesDep);
+        root.addSubordinate(financeDep);
+
+        developDep.addSubordinate(zheng);
+        developDep.addSubordinate(firstDev);
+        developDep.addSubordinate(secondDev);
+
+        firstDev.addSubordinate(a);
+        firstDev.addSubordinate(b);
+        firstDev.addSubordinate(c);
+        secondDev.addSubordinate(d);
+        secondDev.addSubordinate(e);
+        secondDev.addSubordinate(f);
+
+        salesDep.addSubordinate(h);
+        salesDep.addSubordinate(i);
+
+        financeDep.addSubordinate(j);
+
+        return root;
+    }
+
+    public static String getTreeInfo(Branch root){
+        ArrayList<Crop> subordinateList = root.getSubordinate();
+        String info = "";
+        for (Crop s:subordinateList){
+            if (s instanceof Leaf){
+                info = info + s.getInfo() + "\n";
+            }else {
+                info = info + s.getInfo() +"\n" + getTreeInfo((Branch)s);
+            }
+        }
+        return info;
+    }
+
 }

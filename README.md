@@ -15,3 +15,5 @@ different Design Mode on java
 11. Decorator Pattern (装饰者模式)
 12. Strategy Pattern (策略模式)
 13. Adapter Pattern (适配器模式)
+14. Iterator Pattern (迭代器模式)
+15. Composite Pattern (组合模式)
