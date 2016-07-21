@@ -17,3 +17,5 @@ different Design Mode on java
 13. Adapter Pattern (适配器模式)
 14. Iterator Pattern (迭代器模式)
 15. Composite Pattern (组合模式)
+16. Observer Pattern (观察者模式)
+17. Facade Pattern (门面模式)

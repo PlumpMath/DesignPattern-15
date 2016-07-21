@@ -20,8 +20,10 @@ import com.decorator.example.ForthGradeSchoolReport;
 import com.decorator.example.HighScoreDecorator;
 import com.decorator.example.SchoolReport;
 import com.decorator.example.SortDecorator;
+import com.facade.example.ModenPostOffice;
 import com.factorymethod.example.*;
 import com.mediator.*;
+import com.observer.example.*;
 import com.prototype.example.AdvTemplate;
 import com.prototype.example.Mail;
 import com.proxy.example.GamePlayer;
@@ -39,7 +41,6 @@ import com.templatemethod.example.HummerModel;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.Callable;
 
 /**
  * Created by toryang on 7/11/16.
@@ -62,7 +63,9 @@ public class Main {
 //        strategy();
 //        adapter();
 //        iterator();
-        composite();
+//        composite();
+//        observerPattern();
+        facade();
     }
 
     /**
@@ -399,6 +402,33 @@ public class Main {
             }
         }
         return info;
+    }
+
+    /**
+     * Observable Pattern
+     */
+    public static void observerPattern(){
+        Observer lisi = new LiSi();
+        Observer wangsi = new WangSi();
+        Observer liusi = new LiuSi();
+
+        HanFeiZi hanFeiZi = new HanFeiZi();
+        hanFeiZi.addObserver(lisi);
+        hanFeiZi.addObserver(wangsi);
+        hanFeiZi.addObserver(liusi);
+
+        hanFeiZi.haveBreakfast();
+        hanFeiZi.haveFun();
+    }
+
+    /**
+     * Facade Pattern
+     */
+    public static void facade(){
+        ModenPostOffice hellRoadPostOffice = new ModenPostOffice();
+        String address = "Happy road No. 666";
+        String context = "hello, it's me.....";
+        hellRoadPostOffice.sendLetter(address,context);
     }
 
 }
