@@ -23,6 +23,8 @@ import com.decorator.example.SortDecorator;
 import com.facade.example.ModenPostOffice;
 import com.factorymethod.example.*;
 import com.mediator.*;
+import com.memento.example.Boy;
+import com.memento.example.Caretaker;
 import com.observer.example.*;
 import com.prototype.example.AdvTemplate;
 import com.prototype.example.Mail;
@@ -31,6 +33,7 @@ import com.proxy.example.GamePlayerProxy;
 import com.proxy.example.IGamePlayer;
 import com.responsibility.example.*;
 import com.singleton.example.Emperor;
+import com.state.example.ClosingState;
 import com.strategy.example.BackDoor;
 import com.strategy.example.BlockEnemy;
 import com.strategy.example.Context;
@@ -38,8 +41,13 @@ import com.strategy.example.GivenGreenLight;
 import com.templatemethod.example.HummerH1Model;
 import com.templatemethod.example.HummerH2Model;
 import com.templatemethod.example.HummerModel;
+import com.visitor.example.CommonEmployee;
+import com.visitor.example.Employee;
+import com.visitor.example.Manager;
+import com.visitor.example.Visitor;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -65,7 +73,10 @@ public class Main {
 //        iterator();
 //        composite();
 //        observerPattern();
-        facade();
+//        facade();
+//        memento();
+//        visitor();
+        state();
     }
 
     /**
@@ -431,4 +442,81 @@ public class Main {
         hellRoadPostOffice.sendLetter(address,context);
     }
 
+
+    /**
+     * Memento Pattern
+     */
+    public static void memento(){
+        Boy boy = new Boy();
+        Caretaker caretaker = new Caretaker();
+        boy.setState("good mood");
+        System.out.println("======now state=====");
+        System.out.println(boy.getState());
+//        Memento mem = boy.createMemento();
+        caretaker.setMemento(boy.createMemento());
+
+        boy.changeState();
+        System.out.println("\n======after state=====");
+        System.out.println(boy.getState());
+
+        boy.restoreMemento(caretaker.getMemento());
+
+        System.out.println("\n======restore state====");
+        System.out.println(boy.getState());
+
+    }
+
+    /**
+     * Visitor Pattern
+     */
+    public static void visitor() {
+        for (Employee employee: mockEmployee()){
+            employee.accept(new Visitor());
+        }
+    }
+
+    public static List<Employee> mockEmployee(){
+        List<Employee> employeeList = new ArrayList<Employee>();
+        CommonEmployee zhangsan = new CommonEmployee();
+        zhangsan.setJob("Java Coder");
+        zhangsan.setName("zhang san");
+        zhangsan.setSalary(1800);
+        zhangsan.setSex(Employee.MALE);
+        employeeList.add(zhangsan);
+
+        CommonEmployee lisi = new CommonEmployee();
+        lisi.setJob("UI");
+        lisi.setName("Li si");
+        lisi.setSalary(1900);
+        lisi.setSex(Employee.FEMALE);
+        employeeList.add(lisi);
+
+        Manager wangwu = new Manager();
+        wangwu.setName("wang wu");
+        wangwu.setPerformance("none");
+        wangwu.setSalary(18750);
+        wangwu.setSex(Employee.MALE);
+        employeeList.add(wangwu);
+
+        return employeeList;
+    }
+
+    /**
+     * State Pattern
+     */
+    public static void state(){
+//        ILift lift = new Lift();
+//        lift.setState(ILift.STOPPING_STATE);
+//        lift.open();
+//        lift.close();
+//        lift.run();
+//        lift.stop();
+
+        com.state.example.Context context = new com.state.example.Context();
+        context.setLiftState(new ClosingState());
+        context.open();
+        context.close();
+        context.run();
+        context.stop();
+    }
 }

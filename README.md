@@ -19,3 +19,5 @@ different Design Mode on java
 15. Composite Pattern (组合模式)
 16. Observer Pattern (观察者模式)
 17. Facade Pattern (门面模式)
+18. Memento Pattern (备忘录模式)
+19. State Pattern (状态模式)
