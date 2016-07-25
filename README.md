@@ -20,4 +20,6 @@ different Design Mode on java
 16. Observer Pattern (观察者模式)
 17. Facade Pattern (门面模式)
 18. Memento Pattern (备忘录模式)
-19. State Pattern (状态模式)
+19. Visitor Pattern (访问者模式)
+20. State Pattern (状态模式)
+21. Interpreter Pattern (解释器模式)

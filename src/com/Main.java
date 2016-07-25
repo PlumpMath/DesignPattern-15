@@ -22,6 +22,7 @@ import com.decorator.example.SchoolReport;
 import com.decorator.example.SortDecorator;
 import com.facade.example.ModenPostOffice;
 import com.factorymethod.example.*;
+import com.interpreter.Calculator;
 import com.mediator.*;
 import com.memento.example.Boy;
 import com.memento.example.Caretaker;
@@ -46,7 +47,11 @@ import com.visitor.example.Employee;
 import com.visitor.example.Manager;
 import com.visitor.example.Visitor;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -76,7 +81,9 @@ public class Main {
 //        facade();
 //        memento();
 //        visitor();
-        state();
+//        state();
+
+        interpreter();
     }
 
     /**
@@ -519,4 +526,39 @@ public class Main {
         context.run();
         context.stop();
     }
+
+
+    /**
+     * Interpreter Pattern
+     */
+    public static void interpreter(){
+        try {
+            String expStr = getExpStr();
+            HashMap<String,Integer> var = getValue(expStr);
+            Calculator calculator = new Calculator(expStr);
+            System.out.println("result:"+expStr + "=" + calculator.run(var));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getExpStr() throws IOException{
+        System.out.println("input expression: ");
+        return (new BufferedReader(new InputStreamReader(System.in))).readLine();
+    }
+
+    public static HashMap<String,Integer> getValue (String exprStr) throws IOException{
+        HashMap<String,Integer> map = new HashMap<>();
+
+        for (char ch : exprStr.toCharArray()){
+            if (ch != '+' && ch != '-'){
+                if (!map.containsKey(String.valueOf(ch))){
+                    String in = (new BufferedReader(new InputStreamReader(System.in))).readLine();
+                    map.put(String.valueOf(ch),Integer.valueOf(in));
+                }
+            }
+        }
+        return map;
+    }
+
 }
