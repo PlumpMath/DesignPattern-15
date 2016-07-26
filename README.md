@@ -23,3 +23,5 @@ different Design Mode on java
 19. Visitor Pattern (访问者模式)
 20. State Pattern (状态模式)
 21. Interpreter Pattern (解释器模式)
+22. Flyweight Pattern (享元模式)
+23. Bridge Pattern (桥梁模式)
